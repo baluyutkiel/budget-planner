@@ -55,9 +55,3 @@ This application showcases various Angular functionalities and concepts, includi
 - **Cloud Storage Integration**: Sync data across multiple devices.
 - **UI/UX Enhancements**: More intuitive
 
-## License
-This project is licensed under the MIT License.
-
----
-For any issues or feature requests, please submit a ticket on the GitHub repository. Happy budgeting! 🎯
-

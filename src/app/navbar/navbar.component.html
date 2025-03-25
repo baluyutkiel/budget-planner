@@ -1,0 +1,33 @@
+<div #sidebar id="sidebar" class="sidebar bg-dark text-white" [class.collapsed]="isCollapsed">
+  <div class="toggle">
+    <button class="btn btn-toggle" (click)="toggleSidebar()">☰</button>
+  </div>
+  <div class="menu">
+    <ul class="nav flex-column">
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/dashboard" routerLinkActive="active-link">
+          <i class="bi bi-rocket"></i>
+          <span *ngIf="!isCollapsed">Dashboard</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/accounts" routerLinkActive="active-link">
+          <i class="bi bi-credit-card"></i>
+          <span *ngIf="!isCollapsed">Accounts</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="expenses/expenses-overview" routerLinkActive="active-link">
+          <i class="bi bi-table"></i>
+          <span *ngIf="!isCollapsed">Expenses</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/settings" routerLinkActive="active-link">
+          <i class="bi bi-gear"></i>
+          <span *ngIf="!isCollapsed">Settings</span>
+        </a>
+      </li>
+    </ul>
+  </div>
+</div>

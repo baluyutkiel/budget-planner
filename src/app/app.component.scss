@@ -1,0 +1,36 @@
+/* app.component.scss */
+.app-container {
+  display: flex;
+  height: 100vh; /* Full viewport height */
+}
+
+app-navbar {
+  width: 250px; /* Default sidebar width */
+  height: 100vh; /* Full height of the sidebar */
+  position: fixed;
+  top: 0;
+  left: 0;
+  transition: width 0.3s; /* Smooth transition when collapsing */
+}
+
+app-navbar.collapsed {
+  width: 70px; /* Minimized sidebar width */
+}
+
+.main-content {
+  margin-left: 250px; /* Default margin when sidebar is not collapsed */
+  flex-grow: 1;
+  padding: 20px;
+  transition: margin-left 0.3s ease; /* Smooth transition when content adjusts */
+  // background-color: rgb(173, 165, 165);
+}
+
+.main-content-collapsed {
+  margin-left: 70px; /* Adjust margin when sidebar is collapsed */
+}
+
+/* Optional: Styling for your main-content to avoid overlap */
+.main-content {
+  padding-left: 20px;
+  padding-right: 20px;
+}

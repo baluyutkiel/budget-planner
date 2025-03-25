@@ -1,0 +1,64 @@
+<div class="container">
+    <div class="container-sm">
+        <h1>Expenses Overview</h1>
+    </div>
+    <div class="container-md">
+        <form [formGroup]="form" class="d-flex flex-column gap-3">
+            <div class="form-group">
+            </div>
+            <div class="form-group">
+                <label for="expenseType">Choose Expense:</label>
+                <select formControlName="expenseType" class="form-control">
+                    <option *ngFor="let exp of expenseType" [value]="exp">
+                        {{ exp }}
+                    </option>
+                </select>
+                <small class="text-danger" *ngIf="form.get('expenseType')?.touched && !form.get('expenseType')?.value">
+                    Please Select an Expense.
+                </small>
+            </div>
+        </form>
+        <div *ngIf="form.get('expenseType')?.value === 'Non-Variable Expense'">
+            <!-- todo: Grid for Expenses -->
+             <h1>Non-Variable Expenses</h1>
+            
+        </div>
+        <div *ngIf="form.get('expenseType')?.value === 'Variable Expense'">
+            <!-- todo: Grid for Expenses -->
+             <h1>Variable Expense</h1>
+             <div class="row fw-bold border-bottom pb-2">
+                <div class="col-sm">Date</div>
+                <div class="col-sm">Name</div>
+                <div class="col-sm">Category</div>
+                <div class="col-sm">Account</div>
+                <div class="col-sm">Expense Type</div>
+                <div class="col-sm">Cost</div>
+              </div>
+             <div class="row" *ngFor="let exp of filteredExpenseList">
+                <div class="col-sm">
+                    <p>{{ exp.date | date:'yyyy-MM-dd' }}</p>
+                </div>
+                <div class="col-sm">
+                    <p>{{ exp.name }}</p>
+                </div>
+                <div class="col-sm">
+                    <p>{{ exp.category }}</p>
+                </div>
+                <div class="col-sm">
+                    <p>{{ exp.account }}</p>
+                </div>
+                <div class="col-sm">
+                    <p>{{ exp.expenseType }}</p>
+                </div>
+                <div class="col-sm">
+                    <p>{{ exp.cost }}</p>
+                </div>
+             </div>
+        </div>
+        <div *ngIf="filteredExpenseList.length === 0">
+            <p>No expenses found for this type.</p>
+        </div>
+    </div>
+</div>
+
+<!-- todo if Non Variable Expense change Date to Due Date -->

@@ -1,0 +1,69 @@
+<div class="container">
+    <div>
+        <h2>Add Expense</h2>
+    </div>
+    <form [formGroup]="expenseForm" (ngSubmit)="submitForm()">
+        <div class="form-group">
+            <label>Date</label>
+            <input type="date" class="form-control" id="date" formControlName="date">
+        </div>
+        <small class="text-danger" *ngIf="expenseForm.get('date')?.touched && expenseForm.get('date')?.invalid">
+            Please select a date.
+        </small>
+        <div class="form-group">
+            <label>Enter Name</label>
+            <input type="string" class="form-control" id="'name" formControlName="name">
+        </div>
+        <small class="text-danger" *ngIf="expenseForm.get('name')?.touched && !expenseForm.get('name')?.value">
+            Please enter name.
+        </small>
+        <div class="form-group">
+            <label>Choose Category</label>
+            <select formControlName="category" class="form-control">
+                <option *ngFor="let category of expenseCategories" [value]="category?.name">
+                    {{ category?.name }}
+                </option>
+            </select>
+        </div>
+        <small class="text-danger" *ngIf="expenseForm.get('category')?.touched && expenseForm.get('category')?.invalid">
+            Please enter category.
+        </small>
+        <div class="form-group">
+            <label>Choose Bank Account</label>
+            <select formControlName="account" class="form-control">
+                <option *ngFor="let acc of accountList" [value]="acc.bankName">
+                    {{ acc.bankName }} - {{ acc.cardType }}
+                </option>
+            </select>
+        </div>
+        <small class="text-danger" *ngIf="expenseForm.get('account')?.touched && expenseForm.get('account')?.invalid">
+            Please enter account.
+        </small>
+        <div class="form-group">
+            <label>Expense Type</label>
+            <select formControlName="expenseType" class="form-control">
+                <option *ngFor="let et of expenseTypes" [value]="et">
+                    {{ et }}
+                </option>
+            </select>
+        </div>
+        <small class="text-danger" *ngIf="expenseForm.get('expenseType')?.touched && !expenseForm.get('expenseType')?.value">
+            Please enter expense type.
+        </small>
+        <div class="form-group">
+            <label>Cost</label>
+            <input type="number" id="cost" class="form-control" formControlName="cost">
+        </div>
+        <small class="text-danger" *ngIf="expenseForm.get('cost')?.touched && expenseForm.get('cost')?.invalid">
+            Please enter cost.
+        </small>
+        <div class="form-group d-flex justify-content-between">
+            <button type="submit" class="btn btn-success btn-md" [disabled]="expenseForm.invalid">Submit</button>
+            <button type="button" class="btn btn-secondary btn-md" (click)="cancel()">Cancel</button>
+        </div>
+        <div>
+            <pre>{{ expenseForm.status }}</pre>
+            <pre>{{ expenseForm.value | json }}</pre>
+          </div>
+    </form>
+</div>

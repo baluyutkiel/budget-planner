@@ -1,0 +1,22 @@
+.container-sm {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100px;              /* Height that's not too tall */
+    border-radius: 15px;        /* Rounded corners for a sleek look */
+    margin-bottom: 30px;        /* Bottom margin for spacing */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+    padding: 0 20px;            /* Padding for inner spacing */
+  }
+
+  .container-sm h1 {
+    font-size: 2.5rem;             /* Adjusted font size */
+    font-weight: 600;              /* Slightly bold */
+    color: #0c0b0b;                  /* White text */
+    text-align: center;
+    letter-spacing: 1px;           /* Spacing between letters for readability */
+    margin: 0;                     /* Removed default margin */
+    text-transform: uppercase;     /* Uppercase text for emphasis */
+    word-wrap: break-word;         /* Wraps text if it's too long */
+  }
+  

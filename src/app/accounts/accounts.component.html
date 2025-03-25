@@ -1,0 +1,37 @@
+<div class="page-header">
+  <h1 class="page-label">Accounts Overview</h1>
+</div>
+<div class="container mt-4">
+  <div class="row">
+    <div class="col-md-4 mb-4" *ngFor="let account of accounts; let i = index">
+      <div class="card shadow-lg border-light position-relative">
+        <!-- todo: Create a dialog box to confirm deletion of account -->
+        <button class="btn btn-danger btn-sm position-absolute top-0 end-0 m-2" (click)="deleteAccount(i)">
+          <i class="bi bi-x-circle"></i>
+        </button>
+        <img class="card-img-top" [src]="account.logo" [alt]="account.cardType">
+        <div class="card-body">
+          <h5 class="card-title text-center">{{ account.cardType }}</h5>
+          <p class="card-text text-center">{{ account.bankName }}</p>
+          <div class="d-flex justify-content-between">
+            <p class="card-text" *ngIf="account.limit">
+              <strong>Limit: </strong> ${{ account.limit }}
+            </p>
+            <p class="card-text">
+              <strong>Balance: </strong> ${{ account.balance }}
+            </p>
+          </div>
+          <button type="button" routerLink="/" class="btn btn-primary btn-md">View</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row mb-4 justify-content-center">
+  <div class="col-md-6 text-center">
+    <button (click)="onAddAccount()" class="btn btn-add-account btn-lg btn-block shadow-lg">
+      <i class="bi bi-plus-circle"></i> Add New Account
+    </button>
+  </div>
+</div>

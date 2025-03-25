@@ -1,0 +1,40 @@
+<div class="container">
+    <div class="accountheader">
+      <h2>Add Account</h2>
+    </div>
+    <form [formGroup]="accountForm" (ngSubmit)="submitForm()">
+      <div class="form-group">
+        <label for="bank">Bank Name</label>
+        <input type="text" class="form-control" id="bank" formControlName="bank" placeholder="Enter Bank Name">
+        <small class="text-danger" *ngIf="accountForm.get('bank')?.invalid && accountForm.get('bank')?.touched">
+          Bank name is required and must be at least 3 characters long.
+        </small>
+      </div>
+      <div class="form-group">
+        <label for="account">Account Type</label>
+        <select class="form-control" formControlName="cardType" id="account">
+          <option *ngFor="let card of cardTypes" [value]="card">
+            {{ card }}
+          </option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="limit">Limit (Optional if Credit Card)</label>
+        <input formControlName="limit" type="number" class="form-control" id="limit" placeholder="Enter Limit">
+        <small class="text-danger" *ngIf="accountForm.get('limit')?.invalid && accountForm.get('limit')?.touched">
+          Must be a positive number.
+        </small>
+      </div>
+      <div class="form-group">
+        <label for="balance">Current Balance</label>
+        <input formControlName="balance" type="number" class="form-control" id="balance" placeholder="Enter Current Balance">
+        <small class="text-danger" *ngIf="accountForm.get('balance')?.invalid && accountForm.get('balance')?.touched">
+          Balance is required and must be a positive number.
+        </small>
+      </div>
+      <div class="form-group d-flex justify-content-between">
+        <button type="submit" class="btn btn-success btn-md">Submit</button>
+        <button type="button" class="btn btn-secondary btn-md" (click)="cancel()">Cancel</button>
+      </div>
+    </form>
+  </div>

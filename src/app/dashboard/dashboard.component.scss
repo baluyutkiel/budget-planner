@@ -1,0 +1,77 @@
+/* Container to center and space out the cards */
+.container {
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+
+/* Card Styling */
+.card {
+  border-radius: 15px; /* Rounded corners for cards */
+  overflow: hidden; /* Ensure the image doesn't overflow */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  background-color: #f9f9f9; /* Light gray background for cards */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+  border: none; /* Remove card border */
+  margin-bottom: 30px;
+
+  &:hover {
+    transform: translateY(-5px); /* Slight lift on hover */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15); /* Darker shadow on hover */
+  }
+
+  .card-img-top {
+    height: 200px; /* Consistent image height */
+    object-fit: cover; /* Crop the image to fit */
+  }
+
+  .card-body {
+    padding: 20px;
+  }
+
+  .card-title {
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: #333; /* Darker text for title */
+  }
+
+  .card-text {
+    font-size: 1rem;
+    color: #666;
+    margin-bottom: 15px;
+  }
+
+  .btn {
+    background-color: #007bff; /* Bootstrap primary color */
+    color: white;
+    border-radius: 30px;
+    padding: 10px 20px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+
+    &:hover {
+      background-color: #0056b3; /* Darker shade on hover */
+      transform: translateY(-2px); /* Slight lift effect */
+    }
+  }
+
+  .d-flex {
+    justify-content: space-between; /* Space out balance and limit */
+  }
+
+  .mt-3 {
+    margin-top: 15px; /* Margin for the View button */
+  }
+
+  /* Optional: Optional styles for card text, such as "Limit" and "Balance" */
+  .card-text strong {
+    color: #333; /* Darker color for labels */
+  }
+}
+
+/* Responsive Design: Stack the cards on smaller screens */
+@media (max-width: 767px) {
+  .col-md-4 {
+    margin-bottom: 20px;
+  }
+}

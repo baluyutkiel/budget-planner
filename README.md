@@ -1,27 +1,63 @@
-# BudgetPlanner
+# Budget Planner - Angular Application
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.13.
+## Overview
+The **Budget Planner** is an Angular-based web application designed to help users manage their expenses effectively. It includes features such as adding and removing accounts, tracking variable and non-variable expenses, and managing a user profile. The application also provides an overview dashboard that summarizes financial activities.
 
-## Development server
+## Features
+- **Overview Dashboard**: Provides a summary of total expenses and account balances.
+- **Expense Management**: Add, edit, and delete variable and non-variable expenses.
+- **Account Management**: Add and remove accounts with associated details such as bank name, card type, and balance.
+- **User Profile**: Manage user details and preferences.
+- **Filtering and Sorting**: Sort expenses based on category, account type, and expense type.
+- **Form Validation**: Ensures accurate data entry with Angular validators.
+- **Animations and Styling**: Utilizes Bootstrap framework along with animations for enhanced UI experience.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## Technologies Used
+This application showcases various Angular functionalities and concepts, including:
+- **Angular Directives**: `ngClass`, `ngStyle`, `ngIf`, `ngFor`
+- **Reactive Forms**: `FormGroup`, `FormControl`, `Validators`
+- **Observables and RxJS**: Handling asynchronous data
+- **Angular Routing**: Navigating between different sections of the app
+- **Bootstrap Framework**: Styling and responsive design
+- **CSS Animations**: Adding smooth transitions and effects
 
-## Code scaffolding
+## Installation
+### Prerequisites
+- Node.js (latest LTS version recommended)
+- Angular CLI installed globally (`npm install -g @angular/cli`)
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+### Steps to Run the Application
+1. Clone the repository:
+   ```sh
+   git clone
+   cd budget-planner
+   ```
+2. Install dependencies:
+   ```sh
+   npm install
+   ```
+3. Run the application:
+   ```sh
+   ng serve
+   ```
+4. Open your browser and visit `http://localhost:4200/` to access the app.
 
-## Build
+## Usage
+1. **Add an Account**: Navigate to the accounts section and input the required details.
+2. **Add an Expense**: Select an account, input expense details, and choose an expense type.
+3. **Filter Expenses**: Use the dropdown menu to view specific types of expenses.
+4. **Overview Dashboard**: Get a quick summary of expenses and account balances.
+5. **User Profile**: Manage your personal information and preferences.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## Future Enhancements
+- **Export to CSV/PDF**: Ability to export financial reports.
+- **Budget Goals**: Set spending limits and track savings progress.
+- **Cloud Storage Integration**: Sync data across multiple devices.
+- **UI/UX Enhancements**: More intuitive
 
-## Running unit tests
+## License
+This project is licensed under the MIT License.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+---
+For any issues or feature requests, please submit a ticket on the GitHub repository. Happy budgeting! 🎯
 
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.

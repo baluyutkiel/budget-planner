@@ -16,14 +16,6 @@ export class AddExpenseComponent {
   expenseTypes = Object.values(ExpenseType);
   accountList: Account[] = [];
   expenseCategories: ExpenseCategory[] = [];
-  newExpenseForm: Expense = {
-    name: '',
-    date: new Date(),
-    category: { name: 'Food' },
-    account: null,
-    expenseType: ExpenseType.NV,
-    cost: 0
-  }
   constructor(
     private router: Router,
     private expenseService: ExpensesService,
@@ -39,18 +31,14 @@ export class AddExpenseComponent {
   }
 
   ngOnInit() {
-    this.loadExpenseCategories();
-    this.loadAccountList();
+    this.initialize();
   }
-
-  loadExpenseCategories() {
+  initialize() {
     this.expenseService.getExpenseCategories().subscribe(categories => {
       this.expenseCategories = categories;
     });
-  }
 
-  loadAccountList() {
-    this.accountService.getAccounts().subscribe(account => {
+    this.accountService.getAllAccounts().subscribe(account => {
       this.accountList = account;
     });
   }
@@ -59,32 +47,35 @@ export class AddExpenseComponent {
     this.router.navigate(['expenses/expenses-overview']);
   }
 
-    submitForm() {
-      if (this.expenseForm.valid) {
-        const selectedExpenseType = this.expenseForm.get('expenseType')?.value;
-        let expenseType: ExpenseType;
+  submitForm() {
+    if (this.expenseForm.valid) {
+      const selectedExpenseType = this.expenseForm.get('expenseType')?.value;
+      let expenseType: ExpenseType;
 
-        if (selectedExpenseType === ExpenseType.NV) {
-          expenseType = ExpenseType.NV;
-        } else if (selectedExpenseType === ExpenseType.V) {
-          expenseType = ExpenseType.V;
-        } else {
-          expenseType = ExpenseType.NV; // Default to NV if invalid
-        }    
-        const newExpense: Expense = {
-          name: this.expenseForm.get('name')?.value,
-          date: this.expenseForm.get('date')?.value || new Date(),
-          category: this.expenseForm.get('category')?.value,
-          account: this.expenseForm.get('account')?.value,
-          expenseType: expenseType,
-          cost: this.expenseForm.get('cost')?.value || 0
-        };
+      if (selectedExpenseType === ExpenseType.NV) {
+        expenseType = ExpenseType.NV;
+      } else if (selectedExpenseType === ExpenseType.V) {
+        expenseType = ExpenseType.V;
+      } else {
+        expenseType = ExpenseType.NV; // Default to NV if invalid
+      }  
+        
+      const newExpense: Expense = {
+        name: this.expenseForm.get('name')?.value,
+        date: this.expenseForm.get('date')?.value || new Date(),
+        category: { name: this.expenseForm.get('category')?.value },
+        account: this.expenseForm.get('account')?.value,
+        expenseType: expenseType,
+        cost: this.expenseForm.get('cost')?.value || 0,
+        selected: false
+      };
     
-        console.log('New Expense:', newExpense);
-        this.expenseService.addExpense(newExpense)
-        //todo add filering logic for variable expense/nv expense
-        this.router.navigate(['/expenses/expenses-overview']);
-      }
+      console.log('New Expense:', newExpense);
+      this.expenseService.addExpense(newExpense)
+      this.accountService.updateBalance(newExpense);
+      //todo add filering logic for variable expense/nv expense
+      this.router.navigate(['/expenses/expenses-overview']);
     }
+  }
 }
 

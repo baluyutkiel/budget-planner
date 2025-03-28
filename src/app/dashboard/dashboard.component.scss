@@ -1,27 +1,25 @@
-/* Container to center and space out the cards */
 .container {
   padding-top: 30px;
   padding-bottom: 30px;
 }
 
-/* Card Styling */
 .card {
-  border-radius: 15px; /* Rounded corners for cards */
-  overflow: hidden; /* Ensure the image doesn't overflow */
+  border-radius: 15px;
+  overflow: hidden;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  background-color: #f9f9f9; /* Light gray background for cards */
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
-  border: none; /* Remove card border */
+  background-color: #f9f9f9;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  border: none;
   margin-bottom: 30px;
 
   &:hover {
-    transform: translateY(-5px); /* Slight lift on hover */
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15); /* Darker shadow on hover */
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
   }
 
   .card-img-top {
-    height: 200px; /* Consistent image height */
-    object-fit: cover; /* Crop the image to fit */
+    height: 200px;
+    object-fit: cover;
   }
 
   .card-body {
@@ -31,7 +29,7 @@
   .card-title {
     font-size: 1.3rem;
     font-weight: bold;
-    color: #333; /* Darker text for title */
+    color: #333;
   }
 
   .card-text {
@@ -41,7 +39,7 @@
   }
 
   .btn {
-    background-color: #007bff; /* Bootstrap primary color */
+    background-color: #007bff;
     color: white;
     border-radius: 30px;
     padding: 10px 20px;
@@ -50,26 +48,24 @@
     transition: background-color 0.3s ease, transform 0.2s ease;
 
     &:hover {
-      background-color: #0056b3; /* Darker shade on hover */
-      transform: translateY(-2px); /* Slight lift effect */
+      background-color: #0056b3;
+      transform: translateY(-2px);
     }
   }
 
   .d-flex {
-    justify-content: space-between; /* Space out balance and limit */
+    justify-content: space-between;
   }
 
   .mt-3 {
-    margin-top: 15px; /* Margin for the View button */
+    margin-top: 15px;
   }
 
-  /* Optional: Optional styles for card text, such as "Limit" and "Balance" */
   .card-text strong {
-    color: #333; /* Darker color for labels */
+    color: #333;
   }
 }
 
-/* Responsive Design: Stack the cards on smaller screens */
 @media (max-width: 767px) {
   .col-md-4 {
     margin-bottom: 20px;

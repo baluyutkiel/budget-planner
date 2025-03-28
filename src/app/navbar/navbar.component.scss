@@ -1,146 +1,122 @@
-/* Sidebar Styles */
 .sidebar {
   position: fixed;
   top: 0;
   left: 0;
-  width: 250px; /* Full width by default */
-  height: 100%;
-  transition: width 0.3s ease-in-out, transform 0.3s ease-in-out; /* Smooth transition */
+  height: 100vh;
+  width: 240px;
+  background-color: #212529;
+  color: #f8f9fa;
+  transition: width 0.3s ease;
   z-index: 1000;
-  padding-top: 50px;
-  overflow-y: auto;
-}
+  padding-top: 20px;
+  border-right: 1px solid #444;
 
-/* When collapsed, minimize the sidebar */
-.sidebar.collapsed {
-  width: 60px; /* Collapsed width for icons */
-  transition: width 0.3s ease-in-out; /* Ensure the transition effect when collapsing */
-}
-
-/* Large Screens (Full menu visible) */
-@media (min-width: 1025px) {
-  .sidebar .nav-link span {
-    display: inline; /* Show text */
-  }
-
-  .sidebar .nav-link i {
-    margin-right: 10px; /* Space between icon and text */
+  &.collapsed {
+    width: 80px;
   }
 }
 
-/* Medium Screens (Only icons, minimize the navbar) */
-@media (max-width: 1024px) and (min-width: 769px) {
-  .sidebar.collapsed .nav-link span {
-    display: none; /* Hide text when collapsed */
-  }
-
-  .sidebar.collapsed .nav-link i {
-    margin-right: 0; /* No space for icons only */
-    text-align: center;
-    width: 100%;
-  }
-}
-
-/* Small Screens (Hide navbar completely) */
-@media (max-width: 768px) {
-  .sidebar {
-    transform: translateX(-100%); /* Completely hide sidebar */
-    transition: transform 0.5s ease-in-out; /* Animation on hiding */
-  }
-
-  .sidebar.open {
-    transform: translateX(0); /* Show sidebar when toggled */
-  }
-
-  /* Collapse the sidebar to 0px width on small screens */
-  .sidebar.collapsed {
-    width: 0;
-    transition: width 0.3s ease-in-out; /* Transition on collapsing */
-  }
-}
-
-/* Toggle Button */
-.btn-toggle {
-  position: fixed;
-  top: 10px;
-  left: 10px;
+.sidebar .toggle {
+  position: absolute;
+  top: 15px;
+  left: 15px;
   z-index: 1100;
-  background-color: #555;
-  color: white;
-  padding: 10px;
-  border: none;
-  border-radius: 4px;
   cursor: pointer;
 }
 
-/* Menu Styles */
+.sidebar .btn-toggle {
+  background: transparent;
+  color: #f8f9fa;
+  font-size: 24px;
+  border: none;
+  transition: transform 0.3s ease;
+}
+
 .menu {
-  margin-top: 30px;
-}
+  margin-top: 50px;
 
-/* Menu item styles */
-.nav-item {
-  padding: 10px;
-  display: flex;
-  align-items: center;
-}
+  .nav-link {
+    color: #f8f9fa;
+    padding: 12px 20px;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    transition: all 0.3s ease;
+    border-radius: 5px;
+    position: relative;
 
-/* Menu link styles */
-.nav-link {
-  color: white;
-  text-decoration: none;
-  padding: 5px 10px;
-  display: flex;
-  align-items: center;
-  transition: padding 0.3s ease-in-out;
-}
+    i {
+      margin-right: 15px;
+      font-size: 22px;
+      transition: all 0.3s ease;
+    }
 
-/* Icon Adjustments */
-.nav-link i {
-  font-size: 20px;
-  margin-right: 10px;
-}
+    span {
+      transition: opacity 0.3s ease;
+    }
 
-/* Main Content Adjustments */
-#main-content {
-  margin-left: 250px;
-  transition: margin-left 0.3s ease-in-out;
-}
+    &:hover {
+      background-color: #495057;
+      cursor: pointer;
+      padding-left: 25px;
+    }
 
-/* Adjust for medium screens (collapsed sidebar) */
-@media (max-width: 1024px) {
-  #main-content {
-    margin-left: 60px; /* Adjust main content when sidebar is collapsed */
+    &.active-link {
+      background-color: #007bff;
+      color: #ffffff;
+      font-size: 15px; /* Smaller font size for active link */
+      padding: 10px 18px; /* Adjust padding to make the active link less bulky */
+
+      i {
+        color: #ffffff;
+      }
+    }
+  }
+
+  .nav-item {
+    margin-bottom: 10px;
   }
 }
 
-/* Adjust for small screens (sidebar hidden) */
+.sidebar.collapsed .nav-link {
+  justify-content: center;
+}
+
+.sidebar.collapsed .nav-link i {
+  font-size: 28px;
+  margin-right: 0;
+}
+
+.sidebar.collapsed .nav-link span {
+  display: none;
+}
+
+.sidebar.collapsed .menu {
+  margin-top: 40px;
+}
+
 @media (max-width: 768px) {
-  #main-content {
-    margin-left: 0; /* No margin for small screens */
+  .sidebar {
+    width: 200px;
   }
-}
 
-/* Animation when collapsing (reaching smaller window size) */
-@keyframes sidebar-collapse {
-  0% {
-    width: 250px; /* Initial state */
+  .sidebar.collapsed {
+    width: 60px;
   }
-  100% {
-    width: 60px; /* Collapsed state */
+
+  .sidebar .btn-toggle {
+    font-size: 22px;
   }
-}
 
-.active-link {
-  font-weight: bold;
-  color: #ffffff; /* White text for contrast */
-  background-color: rgb(243, 161, 9); /* Blue background */
-  padding: 8px 16px; /* Add padding for a button-like effect */
-  border-radius: 6px; /* Rounded edges */
-  transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth hover effect */
+  .sidebar .nav-link {
+    font-size: 14px;
+  }
 
-  &:hover {
-    background-color: rgb(234, 178, 75); /* Darker blue on hover */
-    transform: scale(1.05); /* Slightly enlarge on hover */
+  .sidebar.collapsed .nav-link {
+    justify-content: center;
+  }
+
+  .sidebar.collapsed .nav-link i {
+    font-size: 26px;
   }
 }

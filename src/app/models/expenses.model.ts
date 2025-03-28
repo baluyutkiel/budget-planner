@@ -6,7 +6,8 @@ export interface Expense {
     category: ExpenseCategory,
     account?: Account | null,
     expenseType: ExpenseType
-    cost: number
+    cost: number,
+    selected: boolean
 }
 
 export enum ExpenseType {

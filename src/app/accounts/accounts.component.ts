@@ -17,22 +17,25 @@ export class AccountsComponent {
 
   ngOnInit() {
     this.loadAccount();
+
+    this.accountService.accounts$.subscribe((accounts) => {
+      this.accounts = accounts;
+    });
   }
 
   loadAccount() {
-    this.accountService.getAccounts().subscribe(account => {
+    this.accountService.getAllAccounts().subscribe(account => {
       this.accounts = account;
     });
-    this,console.log(this.accounts);
+    console.log(this.accounts);
   }
 
   onAddAccount() {
     this.router.navigate(['/accounts/add-account']);
   }
 
-  // todo: create a function in AccountService to delete this
-  deleteAccount(index: number): void {
-    this.accounts.splice(index, 1);
+  deleteAccount(acc: Account): void {
+    this.accountService.deleteAccount(acc);
   }
   
 }

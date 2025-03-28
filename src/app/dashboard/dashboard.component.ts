@@ -16,7 +16,7 @@ export class DashboardComponent {
   }
 
   loadAccount() {
-    this.accountService.getAccounts().subscribe(account => {
+    this.accountService.getAllAccounts().subscribe(account => {
       this.accounts = account;
     });
   }

@@ -8,9 +8,11 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { AccountsComponent } from './accounts/accounts.component';
 import { AddAccountComponent } from './account/add-account/add-account.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ExpensesOverviewComponent } from './expenses/expenses-overview/expenses-overview.component';
 import { AddExpenseComponent } from './expenses/add-expense/add-expense.component';
+import { AddCategoryComponent } from './expenses/add-category/add-category.component';
+import { RemoveCategoryComponent } from './expenses/remove-category/remove-category.component';
 
 @NgModule({
   declarations: [
@@ -20,13 +22,16 @@ import { AddExpenseComponent } from './expenses/add-expense/add-expense.componen
     AccountsComponent,
     AddAccountComponent,
     ExpensesOverviewComponent,
-    AddExpenseComponent
+    AddExpenseComponent,
+    AddCategoryComponent,
+    RemoveCategoryComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     NgbModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

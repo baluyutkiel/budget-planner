@@ -2,7 +2,7 @@ export interface Account {
     logo?: string;
     cardType?: CardType;
     bankName: string;
-    limit?: number;
+    limit: number;
     balance: number;
 }
 

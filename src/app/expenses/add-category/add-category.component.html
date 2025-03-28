@@ -1,0 +1,16 @@
+<div class="container">
+    <h2>Add Category</h2>
+    <form [formGroup]="categoryForm" (ngSubmit)="submitForm()">
+        <div class="form-group">
+            <label>Category Name</label>
+            <input type="string" formControlName="name" class="form-control" id="name">
+        </div>
+        <small class="text-danger" *ngIf="categoryForm.get('name')?.touched && categoryForm.get('name')?.invalid">
+            Please enter category name.
+        </small>
+        <div class="form-group d-flex justfiy-content-between">
+            <button tpye="submit" class="btn btn-success btn-md" [disabled]="categoryForm.invalid">Submit</button>
+            <button type="button" class="btn btn-secondary btn-md" (click)="cancel()">Cancel</button>
+        </div>
+    </form>
+</div>

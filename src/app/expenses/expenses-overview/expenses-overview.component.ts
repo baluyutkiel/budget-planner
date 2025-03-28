@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormControl, FormGroup, FormsModule, Validators } from '@angular/forms';
 import { CardType } from '../../models/account.model';
 import { AccountService } from '../../services/account.service';
 import { Expense, ExpenseType } from '../../models/expenses.model';
@@ -17,39 +17,81 @@ export class ExpensesOverviewComponent {
   expenseType = ['All', ...Object.values(ExpenseType)];
   expenseList: Expense[] = [];
   filteredExpenseList: Expense[] = [];
+  searchTermControl = new FormControl('');
+  searchTerm: string = '';
   constructor (
     private accountService: AccountService,
     private expenseService: ExpensesService,
     private router: Router) {
     this.form = new FormGroup ({
-      expenseType: new FormControl('All', [Validators.required])
+      expenseType: new FormControl('All', [Validators.required]),
     });
   }
 
   ngOnInit() {
-    this.expenseService.getExpensesList().subscribe(x => {
-      this.expenseList = x;
-      this.filterExpenses();
-    });
+    this.loadFilteredExpenses();
 
     this.form.get('expenseType')?.valueChanges.subscribe(() => {
-      this.filterExpenses();
+      this.loadFilteredExpenses();
     });
   }
 
-  filterExpenses() {
-    const selectedExpenseType = this.form.get('expenseType')?.value;
-    console.log(selectedExpenseType);
-    if (selectedExpenseType === 'Variable Expense') {
-      this.filteredExpenseList = this.expenseList.filter(exp => exp.expenseType === ExpenseType.V);
-    } else if (selectedExpenseType === 'Non-Variable Expense') {
-      this.filteredExpenseList = this.expenseList.filter(exp => exp.expenseType === ExpenseType.NV);
-    } else {
-      this.filteredExpenseList = this.expenseList;  // Show all expenses if no type is selected
-    }
+  loadFilteredExpenses() {
+    const expenseType = this.form.get('expenseType')?.value;
+    this.expenseService.filterExpenses(expenseType, this.searchTerm).subscribe(filteredExpenses => {
+      this.filteredExpenseList = filteredExpenses;
+    });
+  }
+
+  onSearchTermChange(event: any) {
+    this.searchTerm = event;
+    this.loadFilteredExpenses();
   }
 
   onAddExpense() {
     this.router.navigate(['/expenses/add-expense']);
+  }
+
+  onAddCategory() {
+    this.router.navigate(['/expenses/add-category']);
+  }
+
+  onRemoveCategory() {
+    this.router.navigate(['/expenses/remove-category']);
+  }
+
+  toggleSelectAll(event: any) {
+    const isSelected = event.target.checked;
+    this.filteredExpenseList.forEach(expense => {
+      expense.selected = isSelected; 
+    });
+    console.log(this.filteredExpenseList);
+  }
+  
+  isAllSelected() {
+    if (this.filteredExpenseList.length === 0) {
+      return false;
+    }
+    return this.filteredExpenseList.every(exp => exp.selected);
+  }
+  
+  onSelect(expense: Expense, event: any) {
+    expense.selected = event.target.checked; 
+  }
+
+  deleteSelectedExpenses() {
+    const selectedExpenses = this.filteredExpenseList.filter(exp => exp.selected);
+  
+    if (selectedExpenses.length > 0) {
+      this.expenseService.removeSelectedExpenses(selectedExpenses);
+      
+      this.expenseService.getExpensesList().subscribe(expenses => {
+        this.filteredExpenseList = expenses;
+      });
+    }
+  }
+  
+  hasSelectedExpenses(): boolean {
+    return this.filteredExpenseList.some(exp => exp.selected);
   }
 }

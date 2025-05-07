@@ -8,38 +8,22 @@ import { Router } from '@angular/router';
   styleUrl: './login.component.scss'
 })
 export class LoginComponent {
-  username: string = '';
-  password: string = '';
-  errorMessage: string = '';
-  loginFailed: boolean = true;
-  isLoggedIn: boolean = false;
-
+  username = '';
+  password = '';
+  errorMessage = '';
+  
   constructor(private authService: AuthService, private router: Router) {}
 
-  ngOnInit() {
-    this.authService.isLoggedIn().subscribe((loggedIn: boolean) => {
-      this.isLoggedIn = loggedIn;
-
-      // if (this.isLoggedIn) {
-      //   this.router.navigate(['/dashboard']);
-      // }
-    });  
-  }
-
-  async login() {
-    try {
-      const success = await this.authService.login(this.username, this.password);
-      if (success) {
-        console.log('Login successful');
-        this.loginFailed = true;
+  login() {
+    this.authService.login(this.username, this.password).subscribe({
+      next: (response) => {
+        console.log('Login response:', response);
+        localStorage.setItem('token', response.token);  // todo: response.token is undefined here. Update with JWT token
         this.router.navigate(['/dashboard']);
-      } else {
-        this.loginFailed = false;
+      },
+      error: (err) => {
         this.errorMessage = 'Invalid username or password';
-      }
-    } catch (error) {
-      this.loginFailed = false;
-      this.errorMessage = 'An error occurred while logging in';
-    }
+      },
+    });
   }
 }

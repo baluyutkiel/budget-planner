@@ -13,8 +13,6 @@ export class DashboardComponent {
   currentUser: String = 'Kiel';
   selectedMonth: Date | null = null;
 
-
-
   constructor(private accountService: AccountService) {}
 
   ngOnInit() {}
@@ -24,7 +22,7 @@ export class DashboardComponent {
   getGreeting(): string {
     const currentTime = new Date().getHours();
 
-    if (currentTime) {
+    if (currentTime < 12) {
       return `Hello ${this.currentUser}, Good Morning`;
     } else if (currentTime < 18) {
       return `Hello ${this.currentUser}, Good Afternoon`;
@@ -33,9 +31,7 @@ export class DashboardComponent {
     }
   }
 
-    // Handle the selection of a month
-    onMonthSelected(event: any): void {
-      this.selectedMonth = event; // You can format the event to display the selected month
-      console.log('Selected month:', this.selectedMonth);
-    }
+  onMonthSelected(event: any): void {
+    this.selectedMonth = event;
+  }
 }

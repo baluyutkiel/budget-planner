@@ -8,11 +8,13 @@ const accountRoutes = require('./routes/accountRoutes');
 const categoryRoutes = require('./routes/categoryRoutes');
 const expenseRoutes = require('./routes/expenseRoutes');
 const savingsRoute = require('./routes/savingsRoutes');
+const userRoutes = require('./routes/userRoutes');
 
 const Account = require('./models/Account');
 const Category = require('./models/Category');
 const Expense = require('./models/Expense');
 const Savings = require('./models/Savings');
+const User = require('./models/User');
 
 require('dotenv').config();
 
@@ -40,6 +42,7 @@ app.use('/api/accounts', accountRoutes);
 app.use('/api/category', categoryRoutes);
 app.use('/api/expense', expenseRoutes);
 app.use('/api/savings', savingsRoute);
+app.use('/api/user', userRoutes);
 
 
 async function insertSampleSavings() {

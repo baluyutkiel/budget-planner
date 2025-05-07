@@ -14,9 +14,6 @@ export class AppComponent implements OnInit {
   constructor(public authService: AuthService) {}
 
   ngOnInit() {
-    this.authService.isLoggedIn().subscribe((loggedIn: boolean) => {
-      this.isLoggedIn = loggedIn;
-    });  
   }
 
   onSidebarToggle(isCollapsed: boolean) {
@@ -24,7 +21,7 @@ export class AppComponent implements OnInit {
   }
 
   logout() {
-    this.authService.logout();
+    // this.authService.logout();
     this.isLoggedIn = false;
   }
 }

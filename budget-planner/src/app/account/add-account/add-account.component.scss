@@ -1,0 +1,39 @@
+.btn-success {
+    background-color: rgb(243, 161, 9);
+    border-color: rgb(243, 161, 9);
+    color: white;
+    &:hover {
+      background-color: rgb(234, 178, 75);
+    }
+}
+  
+.btn-secondary {
+  background-color: #6c757d;
+  color: white;
+  &:hover {
+    background-color: #5a6268;
+  }
+}
+  
+.container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f8f9fa;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+  
+.form-group.d-flex {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.accountheader {
+  text-align: center;
+}
+
+.accountheader h2{
+  font-weight: 600;
+}

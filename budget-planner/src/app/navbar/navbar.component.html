@@ -1,0 +1,55 @@
+<div #sidebar id="sidebar" class="sidebar" [class.collapsed]="isCollapsed">
+  <div class="toggle">
+    <button class="btn btn-toggle" (click)="toggleSidebar()">☰</button>
+  </div>
+  <div class="menu">
+    <ul class="nav flex-column">
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/dashboard" routerLinkActive="active-link">
+          <i class="bi bi-rocket"></i>
+          <span *ngIf="!isCollapsed">Dashboard</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/accounts" routerLinkActive="active-link">
+          <i class="bi bi-credit-card"></i>
+          <span *ngIf="!isCollapsed">Accounts</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="expenses/expenses-overview" routerLinkActive="active-link">
+          <i class="bi bi-receipt"></i>
+          <span *ngIf="!isCollapsed">Expenses</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="savings/savings-overview" routerLinkActive="active-link">
+          <i class="bi bi-bank"></i>
+          <span *ngIf="!isCollapsed">Savings</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link">
+          <i class="bi bi-cash"></i>
+          <span *ngIf="!isCollapsed">Investments</span>
+        </a>
+      </li>
+    </ul>
+  </div>
+  <div class="settings-item">
+    <ul class="nav flex-column">
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/settings" routerLinkActive="active-link">
+          <i class="bi bi-gear"></i>
+          <span *ngIf="!isCollapsed">Settings</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <button class="btn btn-link nav-link text-danger" (click)="logout()">
+          <i class="bi bi-box-arrow-right"></i>
+          <span *ngIf="!isCollapsed">Logout</span>
+        </button>
+      </li>
+    </ul>
+  </div>
+</div>

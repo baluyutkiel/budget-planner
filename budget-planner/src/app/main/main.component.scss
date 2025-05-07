@@ -1,0 +1,33 @@
+.app-container {
+    display: flex;
+    height: 100vh;
+  }
+  
+  app-navbar {
+    width: 250px;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    transition: width 0.3s;
+  }
+  
+  app-navbar.collapsed {
+    width: 70px;
+  }
+  
+  .main-content {
+    margin-left: 250px; 
+    flex-grow: 1;
+    padding: 20px;
+    transition: margin-left 0.3s ease;
+  }
+  
+  .main-content-collapsed {
+    margin-left: 70px;
+  }
+  
+  .main-content {
+    padding-left: 20px;
+    padding-right: 20px;
+  }

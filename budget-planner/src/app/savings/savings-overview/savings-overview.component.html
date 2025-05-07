@@ -1,0 +1,34 @@
+<div class="container py-4">
+  <div class="text-center mb-4">
+    <h1 class="fw-bold text-primary">
+      <i class="bi bi-bank me-2"></i> Savings Overview
+    </h1>
+    <hr class="w-50 mx-auto border-2 opacity-75">
+  </div>
+  <div class="row justify-content-center" *ngIf="savingsAccounts && savingsAccounts.length > 0">
+    <div class="col-md-8">
+      <div class="list-group shadow rounded-3">
+        <a
+          *ngFor="let account of savingsAccounts"
+          class="list-group-item list-group-item-action d-flex justify-content-between align-items-center"
+          (click)="viewAccount(account)">
+          <div>
+            <h5 class="mb-1 fw-semibold">{{ account.name || account.bankName }}</h5>
+            <small class="text-muted">Card Type: {{ account.cardType }}</small>
+          </div>
+          <span class="badge bg-success rounded-pill fs-6">
+            {{ account.balance | currency }}
+          </span>
+        </a>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="loadAccount" class="mt-4">
+    <app-savings-activity [account]="selectedAccount"></app-savings-activity>
+  </div>
+</div>
+<div class="container py-4" *ngIf="savingsAccounts && savingsAccounts.length === 0">
+  <div class="text-center">
+    <h4 class="text-muted">No savings Savings Accounts found.</h4>
+  </div>
+</div>

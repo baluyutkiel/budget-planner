@@ -1,0 +1,13 @@
+<!-- <div *ngIf="!isLoggedIn">
+  <app-login></app-login>
+</div>
+<div class="app-container" *ngIf="isLoggedIn">
+    <app-navbar (sidebarToggle)="onSidebarToggle($event)"></app-navbar>
+    <div [class.main-content-collapsed]="isSidebarCollapsed" class="main-content">
+      <div class="container mt-4">
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+</div> -->
+<!-- Only have router-outlet here -->
+<router-outlet></router-outlet>

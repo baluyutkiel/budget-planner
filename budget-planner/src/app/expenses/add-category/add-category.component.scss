@@ -1,0 +1,21 @@
+.container {
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin: 0 auto;
+}
+
+.container h2 {
+    text-align: center;
+    font-weight: 600;
+}
+
+.container form {
+    margin-top: 20px;
+}
+
+.form-group.d-flex {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}

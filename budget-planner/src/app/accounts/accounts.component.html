@@ -1,0 +1,46 @@
+<div class="container py-4">
+  <div class="text-center">
+    <h1 class="fw-bold text-primary">
+      <i class="bi bi-wallet2 me-2"></i> Accounts Overview
+    </h1>
+    <hr class="w-50 mx-auto border-2 opacity-75">
+  </div>
+  <div class="d-flex justify-content-center mb-4">
+    <button (click)="onAddAccount()" class="btn btn-outline-success px-3 d-flex align-items-center">
+      <i class="bi bi-plus-circle me-2"></i> Add New Account
+    </button>
+  </div>
+  <div class="row d-flex flex-wrap justify-content-start g-4">
+    <div class="col-sm-6 col-md-4 col-lg-3" *ngFor="let account of accounts; let i = index">
+      <div class="card shadow-sm border-light position-relative h-100 d-flex flex-column">
+        <button class="btn btn-danger btn-sm position-absolute top-0 end-0 m-2" (click)="deleteAccount(account)">
+          <i class="bi bi-x-circle"></i>
+        </button>
+        <img class="card-img-top p-3" [src]="account.logo" [alt]="account.cardType" style="max-height: 150px; object-fit: contain;">
+        <div class="card-body text-center d-flex flex-column flex-grow-1">
+          <h5 class="card-title fw-bold text-primary">{{ account.cardType }}</h5>
+          <p class="card-text text-muted">{{ account.bankName }}</p>
+
+          <div class="d-flex justify-content-between px-3">
+            <div>
+              <p class="card-text" *ngIf="account.limit && account.cardType !== 'Chequing'">
+                <strong>Limit:</strong> ${{ account.limit }}
+              </p>  
+            </div>
+
+            <p class="card-text">
+              <strong>Balance:</strong> ${{ account.balance }}
+            </p>
+          </div>
+
+          <div class="mt-auto">
+            <button type="button" class="btn btn-outline-primary px-4">Edit</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="accounts.length === 0" class="mt-4 text-center">
+    <p class="text-muted">No accounts available.</p>
+  </div>
+</div>

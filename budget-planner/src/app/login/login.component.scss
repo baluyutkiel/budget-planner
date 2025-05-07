@@ -1,0 +1,163 @@
+.login-container {
+    display: flex;
+    height: 100vh;
+    width: 100%;
+    flex-direction: row;
+}
+
+.logo-side {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.login-side {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #046057;
+    padding: 20px;
+    position: relative;
+}
+
+.login-title {
+    display: none;
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 2rem;
+    color: white;
+    font-weight: bold;
+}
+
+.login-form {
+    background-color: grey;
+    width: 100%;
+    max-width: 400px;
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+    text-align: center;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+label {
+    font-weight: bold;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    background-color: #046057;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 15px;
+}
+
+button:hover {
+    background-color: #034d44;
+}
+
+.error-message {
+    color: rgb(230, 14, 14);
+    margin-top: 10px;
+    font-size: 14px;
+    text-align: center;
+}
+
+@media screen and (max-width: 1000px) {
+    .login-container {
+        flex-direction: column;
+    }
+
+    .logo-side {
+        display: none !important;
+    }
+
+    .logo {
+        display: none !important;
+    }
+
+    .login-side {
+        width: 100%;
+        height: 100%;
+        padding: 20px;
+        background-color: #046057;
+        position: relative;
+    }
+
+    .login-title {
+        display: block !important;
+        margin-top: 40px;
+        font-size: 50px;
+        font-family: 'Montserrat', sans-serif;
+        font-weight: bold;
+        text-align: center;
+        color: white;
+    }
+
+    .login-form {
+        width: 100%;
+        max-width: 80%;
+        padding: 15px;
+    }
+
+    .form {
+        padding: 15px;
+    }
+
+    h2 {
+        font-size: 35px;
+    }
+
+    input {
+        font-size: 16px;
+    }
+
+    button {
+        font-size: 18px;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .logo-side {
+        display: none !important;
+    }
+
+    .login-side {
+        width: 100%;
+        height: 100%;
+    }
+
+    .login-form {
+        width: 100%;
+        padding: 15px;
+    }
+}

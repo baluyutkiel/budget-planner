@@ -111,4 +111,16 @@ router.get('/non-variable-expenses/upcoming', async (req, res) => {
   }
 });
 
+router.get('/recent', async(req, res) => {
+    try { 
+        const recentExpenses = await Expense.find()
+            .sort({ date: -1})
+            .limit(5);
+        res.status(200).json(recentExpenses);
+    } catch (error) {
+        console.error('Error fetching recent transactions', error);
+        res.status(500).json({ message: 'Failed to fetch recent transactions.', error})
+    }
+});
+
 module.exports = router;

@@ -129,6 +129,14 @@ export class ExpensesService {
     );
   }
 
+  getUpcomingVariableExpenses(): Observable<Expense[]> {
+    const url = `${this.apiExpense}/non-variable-expenses/upcoming`;
+    return this.http.get<Expense[]>(url).pipe(
+      map((expenses: Expense[]) => expenses),
+      catchError(this.handleError<Expense[]>('Error fetching upcoming variable expenses', []))
+    );
+  }
+
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
       console.error(`${operation} failed: ${error.message}`);

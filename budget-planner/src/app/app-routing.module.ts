@@ -18,6 +18,7 @@ import { SavingsTransactionsComponent } from './savings/savings-transactions/sav
 import { SavingsMoveMoneyComponent } from './savings/savings-move-money/savings-move-money.component';
 import { DashboardExpenseComponent } from './dash/dashboard-expense/dashboard-expense.component';
 import { DashboardUpcomingBillComponent } from './dash/dashboard-upcoming-bill/dashboard-upcoming-bill.component';
+import { DashboardRecentTransactionsComponent } from './dash/dashboard-recent-transactions/dashboard-recent-transactions.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -39,7 +40,8 @@ const routes: Routes = [
       { path: 'savings/savings-transactions', component: SavingsTransactionsComponent },
       { path: 'savings/savings-move-money/:id', component: SavingsMoveMoneyComponent },
       { path: 'dash/dashboard-expense', component: DashboardExpenseComponent },
-      { path: 'dash/dashboard-upcoming-bill', component: DashboardUpcomingBillComponent }
+      { path: 'dash/dashboard-upcoming-bill', component: DashboardUpcomingBillComponent },
+      { path: 'dash/dashboard-recent-transactions', component: DashboardRecentTransactionsComponent }
     ]
   },
   { path: '**', redirectTo: '/login' }

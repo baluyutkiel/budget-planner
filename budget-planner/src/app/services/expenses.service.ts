@@ -137,6 +137,14 @@ export class ExpensesService {
     );
   }
 
+  getRecentExpenses(): Observable<Expense[]> {
+    const url = `${this.apiExpense}/recent`;
+    return this.http.get<Expense[]>(url).pipe(
+      map((expenses: Expense[]) => expenses),
+      catchError(this.handleError<Expense[]>('Error fetching recent transactions', []))
+    );
+  }
+
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
       console.error(`${operation} failed: ${error.message}`);

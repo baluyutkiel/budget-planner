@@ -28,7 +28,8 @@ import { MatInputModule } from '@angular/material/input';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatSelectModule } from '@angular/material/select';  // MatSelect module
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { DashboardUpcomingBillComponent } from './dash/dashboard-upcoming-bill/dashboard-upcoming-bill.component'; // Required for Angular Material
+import { DashboardUpcomingBillComponent } from './dash/dashboard-upcoming-bill/dashboard-upcoming-bill.component';
+import { DashboardRecentTransactionsComponent } from './dash/dashboard-recent-transactions/dashboard-recent-transactions.component'; // Required for Angular Material
 
 
 
@@ -50,7 +51,8 @@ import { DashboardUpcomingBillComponent } from './dash/dashboard-upcoming-bill/d
     SavingsTransactionsComponent,
     SavingsMoveMoneyComponent,
     DashboardExpenseComponent,
-    DashboardUpcomingBillComponent
+    DashboardUpcomingBillComponent,
+    DashboardRecentTransactionsComponent
   ],
   imports: [
     MatDatepickerModule,

@@ -12,6 +12,7 @@ export class DashboardExpenseComponent implements OnInit, OnDestroy {
 
   totalExpense: number = 0;
   selectedMonth: number = new Date().getMonth();
+  income: number = 2100;
 
   months = [
     'January', 'February', 'March', 'April', 'May', 'June',
@@ -51,5 +52,9 @@ export class DashboardExpenseComponent implements OnInit, OnDestroy {
 
   loadExpenseForMonth(month: number) {
     this.$loadTotalExpense.next(true);
+  }
+
+  getSavings() {
+    return this.income - this.totalExpense;
   }
 }

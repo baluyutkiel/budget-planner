@@ -60,7 +60,7 @@
           </thead>
           <tbody>
             <tr *ngFor="let exp of filteredExpenseList">
-              <td>{{ exp.date | date:'yyyy-MM-dd' }}</td>
+              <td>{{ exp.date | date:'yyyy-MM-dd' : 'UTC'}}</td>
               <td>{{ exp.name }}</td>
               <td>{{ exp.category.name }}</td>
               <td>{{ exp.bankName }}</td>

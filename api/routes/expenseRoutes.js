@@ -87,4 +87,28 @@ router.get('/total', async (req, res) => {
     }
 });
 
+router.get('/non-variable-expenses/upcoming', async (req, res) => {
+  try {
+    // Get current date in UTC
+    const today = new Date();
+    today.setUTCHours(0, 0, 0, 0); // Set to start of UTC day
+
+    const oneWeekFromNow = new Date(today);
+    oneWeekFromNow.setUTCDate(today.getUTCDate() + 7); // Add 7 days in UTC
+
+    const expenses = await Expense.find({
+      expenseType: 'Non-Variable Expense',
+      date: {
+        $gte: today,          // Start of today in UTC
+        $lte: oneWeekFromNow  // End of 7th day in UTC
+      }
+    });
+
+    res.status(200).json(expenses);
+  } catch (error) {
+    console.error('Error fetching upcoming variable expenses', error);
+    res.status(500).json({ message: 'Failed to fetch upcoming variable expenses.', error });
+  }
+});
+
 module.exports = router;

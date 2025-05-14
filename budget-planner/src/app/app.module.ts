@@ -27,7 +27,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatSelectModule } from '@angular/material/select';  // MatSelect module
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; // Required for Angular Material
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { DashboardUpcomingBillComponent } from './dash/dashboard-upcoming-bill/dashboard-upcoming-bill.component'; // Required for Angular Material
 
 
 
@@ -48,7 +49,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; 
     SavingsActivityComponent,
     SavingsTransactionsComponent,
     SavingsMoveMoneyComponent,
-    DashboardExpenseComponent
+    DashboardExpenseComponent,
+    DashboardUpcomingBillComponent
   ],
   imports: [
     MatDatepickerModule,
